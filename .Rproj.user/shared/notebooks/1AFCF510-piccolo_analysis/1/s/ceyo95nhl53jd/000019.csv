@@ -1,0 +1,5 @@
+"0","d<- density(final$final_score)"
+"0","plot(d, col = ""red"","
+"0","xlab = ""Final score"","
+"0","ylab = ""Density"","
+"0","main = ""Density plot"")"

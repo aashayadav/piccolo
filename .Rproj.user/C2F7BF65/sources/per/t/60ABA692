@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1580485383949.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1274475351",
+    "id" : "60ABA692",
+    "lastKnownWriteTime" : 1580516071,
+    "last_content_update" : 1580516071436,
+    "path" : "C:/Users/asha/Desktop/PICCOLO/piccolo_analysis/piccolo/piccolo_analysis.Rmd",
+    "project_path" : "piccolo_analysis.Rmd",
+    "properties" : {
+        "cursorPosition" : "107,0",
+        "last_setup_crc32" : "FDAA77F8a09a8cf1",
+        "scrollLine" : "105",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

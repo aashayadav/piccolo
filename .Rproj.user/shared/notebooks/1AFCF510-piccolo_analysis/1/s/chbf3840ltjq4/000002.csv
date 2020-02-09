@@ -1,0 +1,78 @@
+"0","attach(data_merge)
+"
+"2","The following objects are masked from data_merge (pos = 3):
+
+    affec_base_total, affec_inter_total, Child, enco_base_total,
+    enco_inter_total, resp_base_total, resp_inter_total, teach_base_total,
+    total_base, total_inter
+
+"
+"2","The following objects are masked from data_merge (pos = 4):
+
+    affec_base_total, affec_inter_total, Child, enco_base_total,
+    enco_inter_total, resp_base_total, resp_inter_total, teach_base_total,
+    total_base, total_inter
+
+"
+"2","The following objects are masked from data_merge (pos = 5):
+
+    affec_base_total, affec_inter_total, Child, enco_base_total,
+    enco_inter_total, resp_base_total, resp_inter_total, teach_base_total,
+    total_base, total_inter
+
+"
+"2","The following objects are masked from data_merge (pos = 6):
+
+    affec_base_total, affec_inter_total, Child, enco_base_total,
+    enco_inter_total, resp_base_total, resp_inter_total, teach_base_total,
+    total_base, total_inter
+
+"
+"2","The following objects are masked from data_merge (pos = 7):
+
+    affec_base_total, affec_inter_total, Child, enco_base_total,
+    enco_inter_total, resp_base_total, resp_inter_total, teach_base_total,
+    total_base, total_inter
+
+"
+"2","The following objects are masked from data_merge (pos = 8):
+
+    affec_base_total, affec_inter_total, Child, enco_base_total,
+    enco_inter_total, resp_base_total, resp_inter_total, teach_base_total,
+    total_base, total_inter
+
+"
+"2","The following objects are masked from data_merge (pos = 9):
+
+    affec_base_total, affec_inter_total, Child, enco_base_total,
+    enco_inter_total, resp_base_total, resp_inter_total, teach_base_total,
+    total_base, total_inter
+
+"
+"2","The following objects are masked from data_merge (pos = 10):
+
+    affec_base_total, affec_inter_total, Child, enco_base_total,
+    enco_inter_total, resp_base_total, resp_inter_total, teach_base_total,
+    total_base, total_inter
+
+"
+"2","The following objects are masked from data_merge (pos = 11):
+
+    affec_base_total, affec_inter_total, Child, enco_base_total,
+    enco_inter_total, resp_base_total, resp_inter_total, teach_base_total,
+    total_base, total_inter
+
+"
+"2","The following objects are masked from data_merge (pos = 12):
+
+    affec_base_total, affec_inter_total, Child, enco_base_total,
+    enco_inter_total, resp_base_total, resp_inter_total, teach_base_total,
+    total_base, total_inter
+
+"
+"0","boxplot(total_base, total_inter,"
+"0","        horizontal=TRUE,"
+"0","        names=c(""baseline"", ""intervention""),"
+"0","        col=c(""turquoise"", ""tomato""),"
+"0","        xlab=""Piccolo scores"","
+"0","        main= ""Baseline and Intervention comparison"")"

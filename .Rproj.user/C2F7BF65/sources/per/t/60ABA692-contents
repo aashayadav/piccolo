@@ -1,0 +1,112 @@
+---
+title: "piccolo_analysis"
+author: "Asha Yadav"
+date: "1/31/2020"
+output:
+  html_document:
+    highlight: tango
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+library(tidyverse)
+library(dplyr)
+library(readxl)
+library(ggplot2)
+library(tidyr)
+
+```
+```{r data}
+data_baseline <- read_excel("C:/Users/asha/Desktop/PICCOLO/piccolo_analysis/piccolo/data/piccolo_data.xlsx")
+data_baseline<- data_baseline[ , c(1, 3:29)]
+data_intervention <- read_excel("C:/Users/asha/Desktop/PICCOLO/piccolo_analysis/piccolo/data/piccolo_data.xlsx", 2)
+data_intervention <- data_intervention[ , c(1, 3:29)]
+data_merge <- merge(data_baseline, data_intervention, by = "Child")%>%
+  select("Child", "affec_base_total", "resp_base_total", "enco_base_total", "teach_base_total", "total_base", "affec_inter_total", "resp_inter_total", "enco_inter_total", "total_inter")
+final<- data_merge%>%
+  select(total_inter, total_base)%>%
+  mutate("final_score" = total_inter - total_base)
+
+```
+# Shapiro-Wilk Normality Test
+Considering the small sample size and paired data, Shapiro-Wilk test is used to check the normality of the final score computed by subtracting the aggregate intervention and baseline score.The null hypothesis of Shapiro-Wilk test is that the population is normally distributed.Thus, if the p value is less than the chosen alpha level (0.05), then the null hypothesis is rejected.However, in this study 'p-value = 0.68'(>0.05) which indicates that the null hypothesis that is the data came from normally distributed population cannot be rejected. Thus the data seems to be normally distributed. 
+```{r normality test}
+shapiro.test(final$final_score)
+
+```
+## q-q plot of the final_score
+To further assess whether or not a distribution is normal we used q-q plot and the density plot. Q-Q plot, plots theoritical quintile of a normal ditribution along the x-axis and the actual quitiles of data along the y-axis. The q-q plot shows that while there are some datapoints that do not lie on the line but some do. This tells us that final-score (variable) is most likely normally distributed.
+```{r fig.cap= " Fig 1.Q-Q Plot"}
+
+qqnorm(final$final_score)
+qqline(final$final_score, col = 'red')
+
+```
+## Density plot
+It further confirms that final_score variable is most likely normally distributed.
+```{r fig.cap= "Fig 2. Density plot"}
+d<- density(final$final_score)
+plot(d, col = "red",
+xlab = "Final score",
+ylab = "Density",
+main = "Density plot")
+```
+# Baseline and Intervention score comparison
+## Boxplot
+Medians for the baseline and intervention scores lie within the overlap between two boxplots. Thus, there may not be difference between the pre and post data. To confirm the observation further, we will carry out t-test.
+
+``` {r, fig.cap = "Mean comparison between baseline and intervention scores"}
+attach(data_merge)
+boxplot(total_base, total_inter,
+        horizontal=TRUE,
+        names=c("baseline", "intervention"),
+        col=c("turquoise", "tomato"),
+        xlab="Piccolo scores",
+        main= "Baseline and Intervention comparison")
+```
+# Descriptive Statstics
+
+```{r}
+
+library(kableExtra)
+library(psych)
+summary <- describe(final)
+
+kable(summary, format = "html",
+      caption = "Table 1: Descriptive statistics for baseline and intervention scores",
+      digits = c(0, 0, 2, 3), align = "ccrr") %>%
+  kable_styling(full_width = FALSE, position = "left")
+  
+  
+  
+```
+
+# Paired sample t test
+Two sided paired sample t test at 95% CI was carried out to determine whether the mean difference between the two sets of observations (baseline and intervention) is zero. 
+H0 = True mean difference between baseline and intervention is zero.
+H1 = True mean difference between baseline and intervention is not zero.
+
+The paired sample t-test has four main assumptions. The study seems to meet first three assumption as baseline score has an outlier. 
+1. The dependent variable must be continous (interval/ratio)
+2. The observations are independent of each other.
+3. The dependent variable should be approximately normally distributed.
+4. The dependent variable should not contain any outliers.
+
+```{r t test}
+# H0 ; Mean difference is zero
+# two sided paired sample t test
+t.test(total_base, total_inter, mu = 0, alt = "two.sided", paired = T, conf.level = 0.95)
+```
+# Results
+A paired sample t test was conducted to compare baseline and intervention score in parent-child interaction. There was no significant difference in the scores for baseline (M = 32.14, S.D = 8.80) and intervention (M = 38.29, S.D = 5.38) condition; t(6) = -2.0453, p = 0.09
+
+# Suggestion
+Increasing the sample size to 20 might be helpful in getting the statistically significant result using the same research design and statistical analysis. 
+
+
